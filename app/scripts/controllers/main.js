@@ -8,11 +8,18 @@
  * Controller of the jstestApp
  */
 angular.module('jstestApp')
-  .controller('MainCtrl', ['$scope', 'MenuService', function ($scope, MenuService) {
-	$scope.menu = {};
-    MenuService.get('/data/menu.json').success(function(data) {
-	  $scope.menu = data;
-	});
+    .controller('MainCtrl', ['$scope', '$rootScope', '$cookieStore', 'MenuService', 'OrderService', function ($scope, $rootScope, $cookieStore, MenuService, OrderService) {
+
+        $scope.menu = {};
+
+        $scope.addToOrder = function(mealId) {
+            OrderService.addMeal(mealId);
+            $rootScope.$broadcast('updateOrder');
+        };
+
+        MenuService.getMenu().then(function(data) {
+            $scope.menu = data;
+        });
 
   }
 ]);

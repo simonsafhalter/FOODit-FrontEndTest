@@ -1,0 +1,25 @@
+<div class="order" ng-controller="OrderCtrl">
+    <h1>Your Order</h1>
+    <h3>A Delicious Restaurant</h3>
+
+    <div ng-repeat="(type, array) in meals">
+        <p>{{ array.length + ' ' + type + (array.length == 1 ? '' : 's') }}</p>
+        <ul>
+            <li class="meals" ng-repeat="meal in array">
+                <div class="meal">
+                    <div class="quantity">
+                        <button ng-click="quantityUp(meal.id)">+</button>
+                        <p>{{meal.quantity}}</p>
+                        <button ng-click="quantityDown(meal.id)">-</button>
+                    </div>
+                    <p class="name">{{meal.name}}</p>
+                    <p class="price">£{{meal.price}}</p>
+                </div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="result">
+        <button class="confirm italic">Confirm your order</button> <p class="total_price">£{{ totalPrice | number : 2 }}</p>
+    </div>
+</div>
