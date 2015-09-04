@@ -8,7 +8,7 @@ describe('Service: MenuService', function () {
   // instantiate service
   var MenuService, $httpBackend;
   beforeEach(inject(function ($injector) {
-	$httpBackend          = $injector.get('$httpBackend');
+	$httpBackend = $injector.get('$httpBackend');
 	MenuService = $injector.get('MenuService');
   }));
 
@@ -30,7 +30,7 @@ describe('Service: MenuService', function () {
 	$httpBackend.whenGET(/\/data\/menu.json?.*/).respond(function(/* method, url */) {
 	  return [200, menuData];
 	});
-	MenuService.get().success(function (data) {
+	MenuService.getMenu().then(function (data) {
 	  expect(data.resultCount).toBe(menuData.resultCount);
 	  expect(data.meals.length).toBe(menuData.meals.length);
 	  expect(data.meals[0].id).toBe(menuData.meals[0].id);

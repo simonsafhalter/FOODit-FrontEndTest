@@ -32,4 +32,3 @@ angular.module('jstestApp')
             getMenu: getMenu
         };
 	}]);
-

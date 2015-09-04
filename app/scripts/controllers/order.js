@@ -2,18 +2,17 @@
 
 /**
  * @ngdoc function
- * @name jstestApp.controller:MainCtrl
+ * @name jstestApp.controller:OrderCtrl
  * @description
- * # MainCtrl
+ * # OrderCtrl controls the order.html view
  * Controller of the jstestApp
  */
 angular.module('jstestApp')
-    .controller('OrderCtrl', ['$scope', 'MenuService', 'OrderService', function ($scope, MenuService, OrderService) {
+    .controller('OrderCtrl', ['$scope', '$filter', '$q', 'MenuService', 'OrderService', function ($scope, $filter, $q, MenuService, OrderService) {
 
-        var tagMainCourse = '#course:main_courses';
-
-        $scope.mainMeals = [];
-        $scope.otherMeals = [];
+        var tagMainCourse = $filter('translate')('TAG_MAIN_COURSE');
+        $scope.meals = [];
+        $scope.totalPrice = 0.0;
 
         $scope.$on('updateOrder', function() {
             updateOrder();
@@ -30,6 +29,7 @@ angular.module('jstestApp')
         };
 
         function updateOrder() {
+            var deferred = $q.defer();
 
             var order = OrderService.getOrder(),
                 meals = {
@@ -44,14 +44,17 @@ angular.module('jstestApp')
 
             MenuService.getMenu().then(function(menu) {
 
+                // iterate through the menu
                 for (i = 0; i < menu.meals.length; i++) {
                     meal = menu.meals[i];
                     isMainCourse = false;
 
+                    // if we have that meal on our order
                     if (order[meal.id]) {
                         meal.quantity = order[meal.id].quantity;
 
                         if (meal.tags) {
+                            // check if meal is a main course
                             for (j = 0; j < meal.tags.length; j++) {
                                 if (meal.tags[j] === tagMainCourse) {
                                     meals.main.push(meal);
@@ -71,9 +74,12 @@ angular.module('jstestApp')
 
                 $scope.meals = meals;
                 $scope.totalPrice = totalPrice;
+                deferred.resolve();
             });
+
+            return deferred.promise;
         }
 
         updateOrder();
-  }
+    }
 ]);

@@ -1,15 +1,17 @@
 <div class="menu">
     <ul class="meals">
-        <h2>Your delicious restaurant</h2>
+        <h2 ng-bind-html="'RESTAURANT_NAME' | translate"></h2>
         <li class="meal" ng-repeat="meal in menu.meals">
             <div class="thumbnail">
                 <img class="image" ng-src="{{meal.primaryImageUrl}}">
-                <p class="price italic">{{meal.price}}</p>
+                <p class="price italic">
+                    <span ng-bind-html="'CURRENCY' | translate"></span>{{ meal.price }}
+                </p>
                 <h2 class="name">{{meal.name}}</h2>
             </div>
 
             <p class="description">{{meal.description}}</p>
-            <button class="add italic" ng-click="addToOrder(meal.id)">Add To Your Order</button>
+            <button class="add italic" ng-click="addToOrder(meal.id)" ng-bind-html="'ORDER_ADD' | translate"></button>
         </li>
     </ul>
 </div>

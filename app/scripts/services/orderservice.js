@@ -8,9 +8,9 @@
  * Service in the jstestApp.
  */
 angular.module('jstestApp')
-    .factory('OrderService', ['$cookieStore', function ($cookieStore) {
+    .factory('OrderService', ['$cookieStore', '$filter', function ($cookieStore, $filter) {
 
-        var cookieId = 'order';
+        var cookieId = $filter('translate')('COOKIE_ID_ORDER');
 
         function addMeal(mealId) {
             var order = $cookieStore.get(cookieId) || {};
@@ -29,6 +29,7 @@ angular.module('jstestApp')
 
         function removeMeal(mealId) {
             var order = $cookieStore.get(cookieId) || {};
+
             if(order && order[mealId]) {
                 if (order[mealId].quantity > 1) {
                     order[mealId].quantity--;
