@@ -18,6 +18,7 @@ angular.module('jstestApp')
                 'ORDER_CONFIRM': 'Confirm your order',
                 'ORDER_ADD': 'Add To Your Order',
                 'RESTAURANT_NAME': 'A Delicious Restaurant',
+                'ORDER_TIME': 'It\'s time to order some delicious food',
                 // Cookies
                 'COOKIE_ID_ORDER': 'order',
                 // Tags

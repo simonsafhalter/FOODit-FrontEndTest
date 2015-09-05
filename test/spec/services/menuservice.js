@@ -27,7 +27,7 @@ describe('Service: MenuService', function () {
 	  { id: '456' }
 	]
 	};
-	$httpBackend.whenGET(/\/data\/menu.json?.*/).respond(function(/* method, url */) {
+	$httpBackend.whenGET(/\/data\/menu.json?.*/).respond(function() {
 	  return [200, menuData];
 	});
 	MenuService.getMenu().then(function (data) {

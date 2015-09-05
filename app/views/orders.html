@@ -1,12 +1,28 @@
-<div class="order" ng-controller="OrderCtrl">
-    <h1 ng-bind-html="'ORDER' | translate"></h1>
-    <h3 ng-bind-html="'RESTAURANT_NAME' | translate"></h3>
+<div class="order" ng-controller="OrderCtrl" ng-init="minified=true">
 
-    <div ng-repeat="(type, array) in meals">
-        <p>{{ array.length + ' ' + type + (array.length == 1 ? '' : 's') }}</p>
-        <ul>
-            <li class="meals" ng-repeat="meal in array">
-                <div class="meal fade">
+    <div class="minified" ng-click="minified = false" ng-show="minified">
+        <div ng-if="totalPrice > 0">
+            <p class="meal_number" ng-repeat="(type, array) in meals">
+                {{ array.length + ' ' + type + (array.length === 1 ? '' : 's') }}
+            </p>
+            <p class="total_price">
+                <span ng-bind-html="'CURRENCY' | translate"></span>{{ totalPrice | number : 2 }}
+            </p>
+        </div>
+        <div ng-if="totalPrice === 0">
+            <p class="order_time" ng-bind-html="'ORDER_TIME' | translate"></p>
+        </div>
+
+    </div>
+
+    <div class="maximized" ng-hide="minified">
+        <h1 ng-bind-html="'ORDER' | translate"></h1>
+        <p ng-bind-html="'RESTAURANT_NAME' | translate"></p>
+
+        <div ng-repeat="(type, array) in meals">
+            <p class="meal_number">{{ array.length + ' ' + type + (array.length === 1 ? '' : 's') }}</p>
+            <ul class="meals" ng-if="array.length > 0">
+                <li class="meal" ng-repeat="meal in array">
                     <div class="quantity">
                         <button ng-click="quantityUp(meal.id)">+</button>
                         <p>{{meal.quantity}}</p>
@@ -16,16 +32,16 @@
                     <p class="price">
                         <span ng-bind-html="'CURRENCY' | translate"></span>{{ meal.price }}
                     </p>
-                </div>
-                <div class="clear"></div>
-            </li>
-        </ul>
-    </div>
+                    <div class="clear"></div>
+                </li>
+            </ul>
+        </div>
 
-    <div class="result">
-        <button class="confirm italic" ng-bind-html="'ORDER_CONFIRM' | translate"></button>
-        <p class="total_price">
-            <span ng-bind-html="'CURRENCY' | translate"></span>{{ totalPrice | number : 2 }}
-        </p>
+        <div class="result">
+            <button class="confirm italic" ng-click="minified = true" ng-bind-html="'ORDER_CONFIRM' | translate"></button>
+            <p class="total_price">
+                <span ng-bind-html="'CURRENCY' | translate"></span>{{ totalPrice | number : 2 }}
+            </p>
+        </div>
     </div>
 </div>

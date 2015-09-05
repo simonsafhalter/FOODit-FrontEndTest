@@ -4,13 +4,17 @@
         <li class="meal" ng-repeat="meal in menu.meals">
             <div class="thumbnail">
                 <img class="image" ng-src="{{meal.primaryImageUrl}}">
-                <p class="price italic">
+                <h3 class="price italic">
                     <span ng-bind-html="'CURRENCY' | translate"></span>{{ meal.price }}
-                </p>
+                </h3>
                 <h2 class="name">{{meal.name}}</h2>
+                <div class="curve"></div>
             </div>
 
-            <p class="description">{{meal.description}}</p>
+            <p class="description">
+                {{meal.description | limitTo : descriptionLimit.current }}
+                <img ng-click="descriptionToggle()" src="images/expand-button.svg" />
+            </p>
             <button class="add italic" ng-click="addToOrder(meal.id)" ng-bind-html="'ORDER_ADD' | translate"></button>
         </li>
     </ul>

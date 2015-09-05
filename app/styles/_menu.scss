@@ -1,0 +1,87 @@
+@import 'var';
+
+.menu
+{
+    margin-top: 5em;
+
+    .meals
+    {
+        padding: 2em 3em;
+    }
+
+    .meal
+    {
+        text-align: center;
+        background-color: white;
+        border: 1px solid #ddd;
+        margin: 2em 0;
+        border-radius: $border_radius_small;
+
+        .thumbnail
+        {
+            position: relative;
+            text-align: center;
+
+            .image
+            {
+                width: 100%;
+            }
+
+            .price
+            {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                margin-left: -2em;
+                padding: 0.5em 1em;
+                background-color: #456CEF;
+                color: white;
+                border-bottom-left-radius: $border_radius_small;
+                border-bottom-right-radius: $border_radius_small;
+            }
+
+            .name
+            {
+                position: absolute;
+                bottom: 0;
+                padding: 1em 0 2em 0;
+                width: 100%;
+                background: rgba(255,255,255,0.7);
+                border-top-left-radius: 50%;
+                border-top-right-radius: 50%;
+            }
+
+            .curve
+            {
+                position: absolute;
+                width: 100%;
+                height: 2em;
+                bottom: 0;
+                background-color: white;
+                border-top-left-radius: 50%;
+                border-top-right-radius: 50%;
+            }
+        }
+
+        .description
+        {
+            text-align: left;
+            padding: 0 2em 1em 2em;
+
+            img
+            {
+                border-radius: $border_radius_small;
+            }
+        }
+
+        .add
+        {
+            background-color: #456BF2;
+            color: white;
+            padding: 1em 4em;
+            width: 80%;
+            border-radius: $border_radius_small;
+            margin-bottom: 2em;
+        }
+    }
+}
