@@ -8,32 +8,22 @@
  * Controller of the jstestApp
  */
 angular.module('jstestApp')
-    .controller('MainCtrl', ['$scope', '$rootScope', '$cookieStore', 'MenuService', 'OrderService', function ($scope, $rootScope, $cookieStore, MenuService, OrderService) {
+    .controller('MainCtrl', ['$scope', '$rootScope', '$cookieStore', '$filter', 'MenuService', 'OrderService', function ($scope, $rootScope, $cookieStore, $filter, MenuService, OrderService) {
 
         $scope.menu = {};
-        $scope.descriptionLimit = {
-            min: 50,
-            current: 50,
-            max: 500
-        };
+        $scope.descriptionLimit = $filter('translate')('DESCRIPTION_LIMIT');
 
         $scope.addToOrder = function(mealId) {
             OrderService.addMeal(mealId);
             $rootScope.$broadcast('updateOrder');
         };
 
-        $scope.descriptionToggle = function() {
-            if($scope.descriptionLimit.current < $scope.descriptionLimit.max) {
-                $scope.descriptionLimit.current = $scope.descriptionLimit.max;
-            }
-            else {
-                $scope.descriptionLimit.current = $scope.descriptionLimit.min;
-            }
+        $scope.descriptionToggle = function($index) {
+            $scope.menu.meals[$index].descriptionExtended = !$scope.menu.meals[$index].descriptionExtended;
         };
 
         MenuService.getMenu().then(function(data) {
             $scope.menu = data;
         });
-
-  }
+    }
 ]);

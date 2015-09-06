@@ -1,36 +1,32 @@
 @import 'var';
 
-.order
-{
-    background-color: $color_order_background;
-    color: white;
-    padding: 1em;
+.order {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
+    background-color: $color_order_background;
+    color: white;
+    padding: 1em;
 
-    .meal_number
-    {
+    .meal_number {
         padding: 0.5em 0;
         margin: 0.5em 0;
         color: $color_darkred;
     }
 
-    .total_price
-    {
+    .total_price {
+        display: block;
+        overflow: hidden;
         padding: 0.5em;
         text-align: center;
         border: $border_red;
-        display: block;
-        overflow: hidden;
+        border-radius: $border_radius_small;
     }
 
-    .minified
-    {
-        p
-        {
+    .minified {
+        p {
             background-color: $color_order_background_inner;
             border-radius: $border_radius_small;
             display: inline-block;
@@ -39,14 +35,12 @@
             margin: 0.5em;
         }
 
-        .order_time
-        {
+        .order_time {
             display: block;
             text-align: center;
         }
 
-        .total_price
-        {
+        .total_price {
             float: right;
         }
     }
@@ -55,17 +49,15 @@
 
         .meals {
             overflow-y: scroll;
-            max-height: 10em;
+            max-height: 9em;
             border: $border_red;
             border-radius: $border_radius_big;
         }
 
         .meal {
-
             border-bottom: $border_red;
             background-color: $color_order_background_inner;
             overflow: hidden;
-
 
             .quantity,
             .name {
@@ -89,21 +81,18 @@
                 float: right;
                 padding: 1em;
             }
+
+            &:last-child {
+                border: none;
+            }
         }
 
-        .meal:last-child
-        {
-            border: none;
-        }
-
-        .result
-        {
+        .result {
             margin-top: 1em;
             padding-top: 1em;
             border-top: 1px solid #D94F4F;
 
-            .confirm
-            {
+            .confirm {
                 background-color: white;
                 color: #7B2D2B;
                 padding: 0.7em;
@@ -111,6 +100,10 @@
                 width: 80%;
                 float: left;
                 margin-right: 1em;
+
+                &:active {
+                    background: #aaa;
+                }
             }
         }
     }

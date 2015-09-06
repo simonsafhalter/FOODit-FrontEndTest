@@ -1,10 +1,8 @@
-<div class="order" ng-controller="OrderCtrl" ng-init="minified=true">
+<div class="order" ng-controller="OrderCtrl" ng-init="minified = true">
 
     <div class="minified" ng-click="minified = false" ng-show="minified">
         <div ng-if="totalPrice > 0">
-            <p class="meal_number" ng-repeat="(type, array) in meals">
-                {{ array.length + ' ' + type + (array.length === 1 ? '' : 's') }}
-            </p>
+            <p class="meal_number" ng-repeat="(type, array) in meals">{{ getMenuNumber(type, array) }}</p>
             <p class="total_price">
                 <span ng-bind-html="'CURRENCY' | translate"></span>{{ totalPrice | number : 2 }}
             </p>
@@ -12,7 +10,6 @@
         <div ng-if="totalPrice === 0">
             <p class="order_time" ng-bind-html="'ORDER_TIME' | translate"></p>
         </div>
-
     </div>
 
     <div class="maximized" ng-hide="minified">
@@ -20,7 +17,7 @@
         <p ng-bind-html="'RESTAURANT_NAME' | translate"></p>
 
         <div ng-repeat="(type, array) in meals">
-            <p class="meal_number">{{ array.length + ' ' + type + (array.length === 1 ? '' : 's') }}</p>
+            <p class="meal_number">{{ getMenuNumber(type, array) }}</p>
             <ul class="meals" ng-if="array.length > 0">
                 <li class="meal" ng-repeat="meal in array">
                     <div class="quantity">

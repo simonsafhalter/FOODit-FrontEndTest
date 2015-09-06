@@ -10,7 +10,6 @@
 angular.module('jstestApp')
     .filter('translate', function() {
         return function(key) {
-
             return {
                 // Strings
                 'CURRENCY': '£',
@@ -19,9 +18,9 @@ angular.module('jstestApp')
                 'ORDER_ADD': 'Add To Your Order',
                 'RESTAURANT_NAME': 'A Delicious Restaurant',
                 'ORDER_TIME': 'It\'s time to order some delicious food',
-                // Cookies
+                // Config
+                'DESCRIPTION_LIMIT': 50,
                 'COOKIE_ID_ORDER': 'order',
-                // Tags
                 'TAG_MAIN_COURSE': '#course:main_courses'
             }[key];
         };

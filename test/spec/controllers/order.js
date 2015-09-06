@@ -35,4 +35,10 @@ describe('Controller: OrderCtrl', function () {
         scope.quantityDown(mealId);
         expect(OrderService.getOrder()[mealId].quantity).toBe(1);
     });
+
+    it('should get the menu number string correctly', function () {
+        var type = 'main';
+        expect(scope.getMenuNumber(type,[1])).toBe('1 main');
+        expect(scope.getMenuNumber(type,[1,2])).toBe('2 mains');
+    });
 });

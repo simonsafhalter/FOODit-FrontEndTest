@@ -1,43 +1,32 @@
+@import 'typography';
 @import 'order';
 @import 'menu';
 
-*
-{
+* {
     margin:0;
     padding:0;
 }
 
-body
-{
-    font-size: medium;
+body {
     color: #787775;
     text-align: center;
     background-color: #F7F7F7;
 }
 
-ul
-{
+ul {
     list-style: none;
 }
 
-button
-{
+button {
     outline: none;
-    font-weight: bold;
+    border: 1px solid #ddd;
 }
 
-.italic
-{
-    font-style: italic;
-}
-
-.clear
-{
+.clear {
     clear: both;
 }
 
-.container
-{
+.container {
     margin: 0 auto;
     text-align: left;
 }

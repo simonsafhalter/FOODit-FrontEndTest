@@ -28,6 +28,10 @@ angular.module('jstestApp')
             updateOrder();
         };
 
+        $scope.getMenuNumber = function(type, array) {
+            return array.length + ' ' + type + (array.length === 1 ? '' : 's');
+        };
+
         function updateOrder() {
             var deferred = $q.defer();
 

@@ -1,34 +1,28 @@
 @import 'var';
 
-.menu
-{
+.menu {
     margin-top: 5em;
 
-    .meals
-    {
+    .meals {
         padding: 2em 3em;
     }
 
-    .meal
-    {
+    .meal {
         text-align: center;
         background-color: white;
         border: 1px solid #ddd;
         margin: 2em 0;
         border-radius: $border_radius_small;
 
-        .thumbnail
-        {
+        .thumbnail {
             position: relative;
             text-align: center;
 
-            .image
-            {
+            .image {
                 width: 100%;
             }
 
-            .price
-            {
+            .price {
                 position: absolute;
                 top: 0;
                 left: 50%;
@@ -40,8 +34,7 @@
                 border-bottom-right-radius: $border_radius_small;
             }
 
-            .name
-            {
+            .name {
                 position: absolute;
                 bottom: 0;
                 padding: 1em 0 2em 0;
@@ -51,8 +44,7 @@
                 border-top-right-radius: 50%;
             }
 
-            .curve
-            {
+            .curve {
                 position: absolute;
                 width: 100%;
                 height: 2em;
@@ -63,25 +55,26 @@
             }
         }
 
-        .description
-        {
+        .description {
             text-align: left;
             padding: 0 2em 1em 2em;
 
-            img
-            {
+            img {
                 border-radius: $border_radius_small;
             }
         }
 
-        .add
-        {
+        .add {
             background-color: #456BF2;
             color: white;
             padding: 1em 4em;
             width: 80%;
             border-radius: $border_radius_small;
             margin-bottom: 2em;
+
+            &:active {
+                background: #151Ba2;
+            }
         }
     }
 }
